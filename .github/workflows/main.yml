@@ -8,14 +8,14 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Login to Heroku Container registry
-      env: 
+      env:
         HEROKU_API_KEY: ${{ secrets.heroku_api_key }}
-      run: heroku container:login 
+      run: heroku container:login
     - name: Build and push
       env:
         HEROKU_API_KEY: ${{ secrets.heroku_api_key }}
-      run: heroku container:push -a hermes-girish web --recursive
+      run: heroku container:push -arg BOT_TOKEN=${{ secrets.bot_token }} -a hermes-girish web --recursive
     - name: Release
       env:
         HEROKU_API_KEY: ${{ secrets.heroku_api_key }}
-      run: heroku container:release -a hermes-girish web 
+      run: heroku container:release -a hermes-girish web
