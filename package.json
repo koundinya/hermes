@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.2.0",
+    "article-parser": "^4.2.1",
     "telegraf": "^3.38.0"
   }
 }
