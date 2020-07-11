@@ -1,22 +1,23 @@
 
-function sendEmail(){
+function sendEmail(article){
   const sgMail = require('@sendgrid/mail');
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: 'girish.koundinya126@kindle.com',
     from: 'share@koundinya.xyz',
-    subject: 'Sending with Twilio SendGrid is Fun',
-    text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    subject: article.title,
+    text: article.content,
+    html: article.content,
     attachments: [
       {
-        content: 'PHN0cm9uZz5hbmQgZWFzeSB0byBkbyBhbnl3aGVyZSwgZXZlbiB3aXRoIE5vZGUuanM8L3N0cm9uZz4=',
-        filename: "share.html",
+        content: Buffer.from(article.content).toString('base64'),
+        filename: (article.title.trim() + ".html"),
         type: "text/html",
         disposition: "attachment"
       }
     ]
   };
+  console.log(msg);
   sgMail.send(msg).then(() => {
     console.log('Message sent')
   }).catch((error) => {
