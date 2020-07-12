@@ -6,6 +6,8 @@ const parser = require("article-parser");
 
 const whiteListUser = 'girishkoundinya'
 const kindleCommand = new RegExp(/^kindle/)
+const source = 'share@koundinya.xyz'
+const destination = 'girish.koundinya126@kindle.com'
 
 const emailParser = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi
 
@@ -27,7 +29,7 @@ bot.hears(kindleCommand, function (ctx){
         var url = parseURL(ctx);
         parseContent(url,function(returnedArt){
             var article = returnedArt;
-            mailer.sendEmail(article);
+            mailer.sendEmail(article,source,destination);
             ctx.reply(
             'Your content will be available on your kindle soon, Happy reading:)');
         });

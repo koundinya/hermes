@@ -1,17 +1,21 @@
 
-function sendEmail(article){
-  const sgMail = require('@sendgrid/mail');
+const sgMail = require('@sendgrid/mail');
+function sendEmail(article,source,destination){
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  var fileName = article.title.toLowerCase().split(" ").join("");
+  fileName = fileName + ".html";
+  var content = article.content.replace( /(<([^>]+)>)/ig, '');
+
   const msg = {
-    to: 'girish.koundinya126@kindle.com',
-    from: 'share@koundinya.xyz',
+    to: destination,
+    from: source,
     subject: article.title,
-    text: article.content,
+    text: content,
     html: article.content,
     attachments: [
       {
-        content: Buffer.from(article.content).toString('base64'),
-        filename: (article.title.trim() + ".html"),
+        content: Buffer.from(content).toString('base64'),
+        filename: fileName,
         type: "text/html",
         disposition: "attachment"
       }
