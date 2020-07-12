@@ -1,7 +1,6 @@
 const Telegraf = require('telegraf')
 const bot = new Telegraf(process.env.BOT_TOKEN)
 const mailer = require('./mailer')
-const request = require("request");
 const parser = require("article-parser");
 
 const whiteListUser = 'girishkoundinya'
