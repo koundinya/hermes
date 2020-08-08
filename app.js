@@ -93,4 +93,15 @@ function verifyUsername(name){
     return true;
 }
 
-bot.launch()
+const PORT = process.env.PORT || 3000;
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+    bot.launch()
+})
+
+app.listen(port, () => {
+  console.log(`listening at ${PORT}`)
+})
