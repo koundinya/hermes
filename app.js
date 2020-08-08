@@ -99,11 +99,11 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-    bot.launch()
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify({ "STATUS": "UP" }));
 })
 
 app.listen(port, () => {
+    bot.launch()
   console.log(`listening at ${PORT}`)
 })
