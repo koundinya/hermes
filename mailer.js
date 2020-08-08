@@ -15,7 +15,7 @@ function sendEmail(article,source,destination){
     attachments: [
       {
         content: Buffer.from(content).toString('base64'),
-        filename: article.title,
+        filename: article.title + ".html",
         type: "text/html",
         disposition: "attachment"
       }
