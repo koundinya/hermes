@@ -96,14 +96,13 @@ function verifyUsername(name){
 const PORT = process.env.PORT || 3000;
 const express = require('express')
 const app = express()
-const port = process.env.PORT | 3000
 
 app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify({ "STATUS": "UP" }));
 })
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     bot.launch()
   console.log(`listening at ${PORT}`)
 })
