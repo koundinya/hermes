@@ -30,4 +30,4 @@ COPY --chown=node:node . .
 ARG BOT_TOKEN
 ENV BOT_TOKEN $BOT_TOKEN
 
-CMD [ "PORT=${PORT} node app.js" ]
+CMD [ "node app.js" ]
