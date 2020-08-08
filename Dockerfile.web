@@ -5,6 +5,7 @@ ARG email_key
 
 ENV BOT_TOKEN = ${bot_token}
 ENV SENDGRID_API_KEY = ${email_key}
+ENV PORT
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
@@ -30,4 +31,4 @@ COPY --chown=node:node . .
 ARG BOT_TOKEN
 ENV BOT_TOKEN $BOT_TOKEN
 
-CMD [ "node app.js" ]
+CMD [ "PORT=${PORT} node", "app.js" ]
