@@ -5,8 +5,8 @@ const parser = require("article-parser");
 
 const whiteListUser = 'girishkoundinya'
 const kindleCommand = new RegExp(/^kindle/)
-const source = 'share@koundinya.xyz'
-const destination = 'girish.koundinya126@kindle.com'
+const source = process.env.EMAIL_SOURCE;
+const destination = process.env.EMAIL_DESTINATION;
 
 const emailParser = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi
 

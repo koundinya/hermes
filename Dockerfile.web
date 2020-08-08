@@ -2,9 +2,13 @@ FROM node:10-alpine
 
 ARG bot_token
 ARG email_key
+ARG email_source
+ARG email_destination
 
 ENV BOT_TOKEN = ${bot_token}
 ENV SENDGRID_API_KEY = ${email_key}
+ENV EMAIL_SOURCE = ${email_source}}
+ENV EMAIL_DESTINATION = ${email_destination}
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
