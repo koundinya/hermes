@@ -28,9 +28,9 @@ bot.hears(kindleCommand, function (ctx){
         var url = parseURL(ctx);
         parseContent(url,function(returnedArt){
             var article = returnedArt;
-            mailer.sendEmail(article,source,destination);
-            ctx.reply(
-            'Your content will be available on your kindle soon, Happy reading:)');
+            mailer.sendEmail(article,source,destination,function(response){
+                ctx.reply(response);
+            });
         });
 
     }catch(err) {
