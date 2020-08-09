@@ -18,7 +18,7 @@ var STATUS = {
     CONTENT_INVALID: 3
 };
 
-bot.start(function(cxt){
+bot.start(function(ctx){
     ctx.reply('Welcome!');
 });
 
