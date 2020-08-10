@@ -1,6 +1,6 @@
 const Telegraf = require('telegraf')
 const bot = new Telegraf(process.env.BOT_TOKEN)
-const mailer = require('./mailer')
+const { sendEmail } = require('./mailer')
 const parser = require("article-parser");
 
 const whiteListUser = 'girishkoundinya'
@@ -22,39 +22,26 @@ bot.start(function(ctx){
     ctx.reply('Welcome!');
 });
 
-bot.hears(kindleCommand, function (ctx){
+bot.hears(kindleCommand, async (ctx) => {
     try {
         verify(ctx);
         var url = parseURL(ctx);
-        parseContent(url,function(returnedArt){
-            var article = returnedArt;
-            mailer.sendEmail(article,source,destination,function(response){
-                ctx.reply(response);
-            });
-        });
-
-    }catch(err) {
+        const article = await parseContent(url);
+        const response = await sendEmail(article, source, destination);
+        ctx.reply(response);
+    } catch(err) {
         handleErr(ctx,err);
     }
 });
 
-function parseContent(url,callback){
-    const getArticle = async (url) => {
-        try {
-            const article = await parser.extract("https://" + url);
-            return article;
-        } catch (err) {
-            console.log(err);
-        }
-      };
-
-    getArticle(url).then((article) => {
-        callback(article);
-      }).catch((err) => {
-        console.log(err);
+const parseContent = async (url) => {
+    try {
+        return await parser.extract("https://" + url);
+    } catch (err) {
+        console.log('parser.extract_error', err);
         throw STATUS.CONTENT_INVALID;
-      });
-}
+    }
+};
 
 function handleErr(ctx,err){
     switch (err) {
