@@ -1,5 +1,11 @@
 version: '2.0'
 services:
+  sendgrid:
+    image: ghashange/sendgrid-mock:1.1.1
+    environment:
+      - API_KEY=$SENDGRID_API_KEY
+    ports:
+      - "3000:3000"
   web:
     build:
       context: ./
@@ -10,4 +16,4 @@ services:
       - EMAIL_SOURCE=$EMAIL_SOURCE
       - SENDGRID_API_KEY=$SENDGRID_API_KEY
     ports:
-    - "3000:3000"
+    - "3001:3001"
