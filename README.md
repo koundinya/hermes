@@ -19,8 +19,10 @@ https://blog.koundinya.xyz/posts/meet-hermes/
 
 ### Requirements
 
-1. Whitelist an email to receive content on your Kindle.
+1. Whitelist an email to receive content on your Kindle. (https://www.amazon.com/gp/sendtokindle/email)
+
 2. Create a send grid account and register a Sender identity (https://app.sendgrid.com/settings/sender_auth)
+
 3. Create a telegram account
 
 #### Environment Variables
