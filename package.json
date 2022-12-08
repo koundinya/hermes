@@ -8,7 +8,7 @@
   "dependencies": {
     "@sendgrid/mail": "^7.2.0",
     "article-parser": "^4.2.1",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "node-article-extractor": "^1.1.2",
     "telegraf": "^3.38.0"
   }
